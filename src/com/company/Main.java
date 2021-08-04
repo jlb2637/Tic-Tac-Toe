@@ -18,6 +18,13 @@ public class Main {
                 should contain things like make a move or
                     end current players turn
         */
+
+
+        //testing out board class so far!
+        Board board = new Board();
+        board.ClearBoard();
+        board.displayBasicBoard();
+        
     }
 
 }
