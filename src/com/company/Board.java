@@ -9,7 +9,7 @@ public class Board {
 
     public Board(){
 
-        Data = new int[8];
+        Data = new int[9];
     }
 
     //methods
@@ -37,7 +37,6 @@ public class Board {
         System.out.println(Data[3] + " | " + Data[4] + " | " + Data[5]);
         System.out.println("--|---|--");
         System.out.println(Data[6] + " | " + Data[7] + " | " + Data[8]);
-        System.out.println("--|---|--");
 
     }
 }
