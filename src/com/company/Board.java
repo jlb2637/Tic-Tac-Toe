@@ -13,10 +13,17 @@ public class Board {
     }
 
     //methods
+
     //this will reset the array containing all x and o info
     public void ClearBoard(){
         //THIS IS NEW THATS COOL
         Arrays.fill(Data, 0);
+    }
+
+    //based on given player place an x or o in the given position
+    public void placePiece(Player player, int position){
+
+
     }
 
     public void displayBasicBoard(){
