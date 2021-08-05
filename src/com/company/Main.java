@@ -36,17 +36,21 @@ public class Main {
 
         //official game loop
         //until the win condition of 3 in a row is satisfied the game keeps going
-        while(win == false) {
+        while(!win) {
 
             //player 1's turn
             p1.PrintTurnConsole();
-            move = p1.GetMoveConsole();
+            move = p1.GetMoveConsole(board);
+            //for player convenience (1-9 choice instead of 0-8)
+            //subract one from move
+            move--;
             board.placePiece(p1, move);
             board.displayBasicBoard();
 
             //player 2's turn
             p2.PrintTurnConsole();
-            move = p2.GetMoveConsole();
+            move = p2.GetMoveConsole(board);
+            move--;
             board.placePiece(p2, move);
             board.displayBasicBoard();
 

@@ -14,6 +14,11 @@ public class Board {
 
     //methods
 
+    //required getter for checking valid moves
+    public int getCellData(int cell){
+        return Data[cell];
+    }
+
     //this will reset the array containing all x and o info
     public void ClearBoard(){
         //THIS IS NEW THATS COOL
@@ -44,13 +49,27 @@ public class Board {
 
         print's that take the data from corresponding array positions
          */
+
+        //parsing the 1's and zeros into a new array of x's and o's for
+        //a nicer user experience
+        char[] Cdata = new char[9];
+        for(int i = 0; i < Data.length; i++){
+            if(Data[i] == 0){
+                Cdata[i] = ' ';
+            }else if(Data[i]  == 1){
+                Cdata[i] = 'x';
+            }else if(Data[i] == 2){
+                Cdata[i] = 'o';
+            }
+        }
+
         //thought about making extra methods or loops for these lines but that felt extra
         //for a very simple task
-        System.out.println(Data[0] + " | " + Data[1] + " | " + Data[2]);
+        System.out.println(Cdata[0] + " | " + Cdata[1] + " | " + Cdata[2]);
         System.out.println("--|---|--");
-        System.out.println(Data[3] + " | " + Data[4] + " | " + Data[5]);
+        System.out.println(Cdata[3] + " | " + Cdata[4] + " | " + Cdata[5]);
         System.out.println("--|---|--");
-        System.out.println(Data[6] + " | " + Data[7] + " | " + Data[8]);
+        System.out.println(Cdata[6] + " | " + Cdata[7] + " | " + Cdata[8]);
 
     }
 }

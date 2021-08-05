@@ -25,7 +25,7 @@ public class Player {
 
     //get input from the player
     //biggest catch here is to check they chose a valid move
-    public int GetMoveConsole(){
+    public int GetMoveConsole(Board board){
         System.out.println("Please enter a number 1-9: ");
         int x = keyboard.nextInt();
         //we want the user to input a position 1-9
@@ -33,14 +33,17 @@ public class Player {
         //123
         //456
         //789
-        //we will -1 from the result to send to Main
+
+        //making sure number is 1-9 and not already used
         if (x > 9 || x < 1){
             System.out.println("Invalid move please enter a number 1-9: ");
-            x = GetMoveConsole();
+            x = GetMoveConsole(board);
         }
+        if(board.getCellData(x-1) !=0){
+            System.out.println("cell already taken, please choose another");
+            x = GetMoveConsole(board);
 
-        //shifting
-        x--;
+        }
         return x;
     }
 }
