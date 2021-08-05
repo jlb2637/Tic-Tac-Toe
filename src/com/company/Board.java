@@ -43,7 +43,6 @@ public class Board {
         //start with checking horizontally
         //in index 0, get value, if values in index 1 and 2 are the same:
         //thats a win!
-        //TODO announce who won
 
         int horC;
         //horizontal check loop

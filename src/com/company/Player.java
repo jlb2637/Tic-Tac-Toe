@@ -23,6 +23,11 @@ public class Player {
         System.out.println("It's player " + pnum + "'s turn!");
     }
 
+    //for choosing
+    public int GetInput(){
+        return keyboard.nextInt();
+    }
+
     //get input from the player
     //biggest catch here is to check they chose a valid move
     public int GetMoveConsole(Board board){

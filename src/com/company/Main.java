@@ -1,7 +1,5 @@
 package com.company;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -14,10 +12,11 @@ public class Main {
                 -possible graphics here
         -a game class
                 -check for if anyone won, let whoevers turn it is play
-        -?? a player class
+        - a player class
                 -create a player object to interact with the board
-                should contain things like make a move or
-                    end current players turn
+                should contain things like make a move and
+                announce whos turn it is
+
         */
 
 
@@ -30,39 +29,55 @@ public class Main {
         Player p1 = new Player(1);
         Player p2 = new Player(2);
 
-        //game loop setup
-        boolean win = false;
-        int move;
+        boolean play = true;
+        int g;
+        //loop so that people can play again without restarting
+        while(play) {
 
-        //official game loop
-        //until the win condition of 3 in a row is satisfied the game keeps going
-        while(!win) {
+            //game loop setup
+            boolean win = false;
+            int move;
 
-            //player 1's turn
-            p1.PrintTurnConsole();
-            move = p1.GetMoveConsole(board);
-            //for player convenience (1-9 choice instead of 0-8)
-            //subract one from move
-            move--;
-            board.placePiece(p1, move);
-            board.displayBasicBoard();
+            //official game loop
+            //until the win condition of 3 in a row is satisfied the game keeps going
+            while (!win) {
 
-            //win condition check
-            win = board.checkWin();
-            //this one needs to break if it gets set true,
-            //otherwise player 2 gets an extra turn
-            if(win)
-                break;
+                //player 1's turn
+                p1.PrintTurnConsole();
+                move = p1.GetMoveConsole(board);
+                //for player convenience (1-9 choice instead of 0-8)
+                //subract one from move
+                move--;
+                board.placePiece(p1, move);
+                board.displayBasicBoard();
 
-            //player 2's turn
-            p2.PrintTurnConsole();
-            move = p2.GetMoveConsole(board);
-            move--;
-            board.placePiece(p2, move);
-            board.displayBasicBoard();
+                //win condition check
+                win = board.checkWin();
+                //this one needs to break if it gets set true,
+                //otherwise player 2 gets an extra turn
+                if (win) {
+                    System.out.println("Player 1 wins!");
+                    break;
+                }
+                //player 2's turn
+                p2.PrintTurnConsole();
+                move = p2.GetMoveConsole(board);
+                move--;
+                board.placePiece(p2, move);
+                board.displayBasicBoard();
 
-            //win condition check
-            win = board.checkWin();
+                //win condition check
+                win = board.checkWin();
+                //adding this break just so we can say which player won
+                if (win) {
+                    System.out.println("Player 2 wins!");
+                    break;
+                }
+            }
+            System.out.println("To play again, type 1 and press enter, any other entry will exit");
+            g = p1.GetInput();
+            if(g == 1)
+                play = false;
         }
     }
 }
