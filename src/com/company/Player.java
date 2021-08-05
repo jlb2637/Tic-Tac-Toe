@@ -13,7 +13,11 @@ public class Player {
     public Player(int playerNum){
         pnum = playerNum;
     }
-
+    //gets the 'ID' number of player
+    //for checking which player made a move
+    public int getNum(){
+        return pnum;
+    }
     //for console based version:
     public void PrintTurnConsole(){
         System.out.println("It's player " + pnum + "'s turn!");
@@ -35,6 +39,8 @@ public class Player {
             x = GetMoveConsole();
         }
 
+        //shifting
+        x--;
         return x;
     }
 }

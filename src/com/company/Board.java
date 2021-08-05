@@ -21,8 +21,15 @@ public class Board {
     }
 
     //based on given player place an x or o in the given position
+    //for player 1, use x's, player 2, use o's
     public void placePiece(Player player, int position){
-
+        if(player.getNum() == 1){
+            Data[position] = 1;
+        } else if(player.getNum() == 2){
+            Data[position] = 2;
+        } else {
+            System.out.println("There was an error somewhere, either a player did not move or player ID is wrong");
+        }
 
     }
 

@@ -1,10 +1,11 @@
 package com.company;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
-        System.out.println("Hello World!");
+
         /*general structure notes:
         -this class will be where all the action happens
             -use game class functions to 'play'
@@ -20,11 +21,37 @@ public class Main {
         */
 
 
-        //testing out board class so far!
+        //board setup
         Board board = new Board();
         board.ClearBoard();
         board.displayBasicBoard();
-        
-    }
 
+        //player setup
+        Player p1 = new Player(1);
+        Player p2 = new Player(2);
+
+        //game loop setup
+        boolean win = false;
+        int move;
+
+        //official game loop
+        //until the win condition of 3 in a row is satisfied the game keeps going
+        while(win == false) {
+
+            //player 1's turn
+            p1.PrintTurnConsole();
+            move = p1.GetMoveConsole();
+            board.placePiece(p1, move);
+            board.displayBasicBoard();
+
+            //player 2's turn
+            p2.PrintTurnConsole();
+            move = p2.GetMoveConsole();
+            board.placePiece(p2, move);
+            board.displayBasicBoard();
+
+            //win condition check
+
+        }
+    }
 }
