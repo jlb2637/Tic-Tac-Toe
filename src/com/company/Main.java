@@ -47,6 +47,13 @@ public class Main {
             board.placePiece(p1, move);
             board.displayBasicBoard();
 
+            //win condition check
+            win = board.checkWin();
+            //this one needs to break if it gets set true,
+            //otherwise player 2 gets an extra turn
+            if(win)
+                break;
+
             //player 2's turn
             p2.PrintTurnConsole();
             move = p2.GetMoveConsole(board);
@@ -55,7 +62,7 @@ public class Main {
             board.displayBasicBoard();
 
             //win condition check
-
+            win = board.checkWin();
         }
     }
 }

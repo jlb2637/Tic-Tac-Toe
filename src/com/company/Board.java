@@ -38,6 +38,63 @@ public class Board {
 
     }
 
+    //check board for all possible 3 in a row combos
+    public boolean checkWin(){
+        //start with checking horizontally
+        //in index 0, get value, if values in index 1 and 2 are the same:
+        //thats a win!
+        //TODO announce who won
+
+        int horC;
+        //horizontal check loop
+        for(int i = 0; i < 3; i++){
+            horC = getCellData(i);
+            //if zero, then nobody moved here so just break
+            if(horC == 0)
+                break;
+
+            if(horC == getCellData(i+1) && horC == getCellData(i+2)){
+                //WE HAVE A WINNER!
+                //if this is true
+                return true;
+            }
+        }
+
+        int verC;
+        //this should pretty much be the same with different indices
+        for(int i = 0; i < 3; i++){
+            verC = getCellData(i);
+            if(verC == 0)
+                break;
+
+            if(verC == getCellData(i+3) && verC == getCellData(i+6)){
+                return true;
+            }
+        }
+
+        int diaC;
+        //diagonal win checking, slightly different as no loop to do this
+        //diagonal 1
+        diaC = getCellData(0);
+        if(diaC == 0) {
+            return false;
+        }
+        if(diaC == getCellData(4) && diaC == getCellData(8)) {
+            return true;
+        }
+        //diagonal 2
+        diaC = getCellData(2);
+        if(diaC == 0) {
+            return false;
+        }
+        if(diaC == getCellData(4) && diaC == getCellData(6)) {
+            return true;
+        }
+
+        //if we made it here no win conditions met
+        return false;
+    }
+
     public void displayBasicBoard(){
         //this is gonna be a console board display
         /*
